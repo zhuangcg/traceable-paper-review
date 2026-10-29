@@ -20,7 +20,7 @@ Suggested topics: agent-skills, codex, claude-code, academic-reading, pdf-annota
 ## Verification boundaries
 
 Local script checks, the synthetic two-page example, citation placement, annotation colors/comments, cleanup and public-file scans were exercised.
-The GitHub Actions workflow is provided but has not run remotely.
+GitHub Actions runs on pushes and pull requests; the README badge and Actions page show its current result.
 Codex and Claude Code installation paths were checked against official documentation; a fresh client installation from a public GitHub URL has not been exercised.
 MinerU installation, OCR workflows and Zotero import were not exercised.
 The synthetic notes are predefined in their builder; they are not an independent model-quality benchmark.
