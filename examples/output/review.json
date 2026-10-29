@@ -1,0 +1,319 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "id": "DEMO-001",
+    "source": "../input/paper.md",
+    "sha256": "b7401e9da6237889497b7bebe75aabbe85eb9c49cc68ce58faaa189040cb6e1c"
+  },
+  "quality": {
+    "mechanical_audit": "passed",
+    "warnings": [
+      "Semantic similarity between distinct tag strings is NOT machine-verified; manually compare five roles."
+    ],
+    "limits": [
+      "PDF highlight correctness requires visual/manual check",
+      "semantic entailment",
+      "completeness of human/AI reading",
+      "accuracy of figure interpretation",
+      "whether lines without detectable factual keywords require citations",
+      "semantic independence of tags"
+    ]
+  },
+  "tags": {
+    "phenomenon": "图书馆到访差异",
+    "theory": null,
+    "method": "组均值比较",
+    "data": "虚构到访记录",
+    "policy": null
+  },
+  "evidence": [
+    {
+      "id": "E0001",
+      "type": "background",
+      "claim": "本材料纯属虚构演示，不是科学研究。",
+      "status": "verified_direct",
+      "note": "仅核实虚构演示文本的表述；不是现实世界的科学证据。",
+      "supports": [
+        {
+          "quote": "This document is an entirely fictional demonstration, not a scientific study.",
+          "section": "Library hours and visits — FICTIONAL DEMO > Background",
+          "lines": [
+            5,
+            5
+          ],
+          "pdf": {
+            "status": "matched",
+            "page": 1
+          },
+          "md": {
+            "status": "matched"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E0002",
+      "type": "problem",
+      "claim": "演示问题是开放时间较长的图书馆是否也有更多到访。",
+      "status": "verified_direct",
+      "note": "仅核实虚构演示文本的表述；不是现实世界的科学证据。",
+      "supports": [
+        {
+          "quote": "The example asks whether libraries with longer opening hours also record more visits.",
+          "section": "Library hours and visits — FICTIONAL DEMO > Background",
+          "lines": [
+            7,
+            7
+          ],
+          "pdf": {
+            "status": "matched",
+            "page": 1
+          },
+          "md": {
+            "status": "matched"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E0003",
+      "type": "theory",
+      "claim": "两项指标存在关系并不证明因果。",
+      "status": "verified_direct",
+      "note": "仅核实虚构演示文本的表述；不是现实世界的科学证据。",
+      "supports": [
+        {
+          "quote": "A relationship between opening hours and visits would not establish causation.",
+          "section": "Library hours and visits — FICTIONAL DEMO > Background",
+          "lines": [
+            9,
+            9
+          ],
+          "pdf": {
+            "status": "matched",
+            "page": 1
+          },
+          "md": {
+            "status": "matched"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E0004",
+      "type": "data",
+      "claim": "虚构数据包含一周内十二家图书馆。",
+      "status": "verified_direct",
+      "note": "仅核实虚构演示文本的表述；不是现实世界的科学证据。",
+      "supports": [
+        {
+          "quote": "The fictional dataset contains twelve libraries observed during one illustrative week.",
+          "section": "Library hours and visits — FICTIONAL DEMO > Methods",
+          "lines": [
+            13,
+            13
+          ],
+          "pdf": {
+            "status": "matched",
+            "page": 1
+          },
+          "md": {
+            "status": "matched"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E0005",
+      "type": "method",
+      "claim": "将十二家图书馆分为六家与六家的两组。",
+      "status": "verified_direct",
+      "note": "仅核实虚构演示文本的表述；不是现实世界的科学证据。",
+      "supports": [
+        {
+          "quote": "Six libraries are placed in a shorter-hours group and six in a longer-hours group.",
+          "section": "Library hours and visits — FICTIONAL DEMO > Methods",
+          "lines": [
+            15,
+            15
+          ],
+          "pdf": {
+            "status": "matched",
+            "page": 1
+          },
+          "md": {
+            "status": "matched"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E0006",
+      "type": "method",
+      "claim": "方法是比较两组每馆到访次数的均值。",
+      "status": "verified_direct",
+      "note": "仅核实虚构演示文本的表述；不是现实世界的科学证据。",
+      "supports": [
+        {
+          "quote": "The method compares the average number of visits between the two groups.",
+          "section": "Library hours and visits — FICTIONAL DEMO > Methods",
+          "lines": [
+            17,
+            17
+          ],
+          "pdf": {
+            "status": "matched",
+            "page": 1
+          },
+          "md": {
+            "status": "matched"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E0007",
+      "type": "result",
+      "claim": "短开放时间组的示意均值为每馆120次。",
+      "status": "verified_direct",
+      "note": "仅核实虚构演示文本的表述；不是现实世界的科学证据。",
+      "supports": [
+        {
+          "quote": "The shorter-hours group has an illustrative mean of 120 visits per library.",
+          "section": "Library hours and visits — FICTIONAL DEMO > Results",
+          "lines": [
+            21,
+            21
+          ],
+          "pdf": {
+            "status": "matched",
+            "page": 2
+          },
+          "md": {
+            "status": "matched"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E0008",
+      "type": "result",
+      "claim": "长开放时间组的示意均值为每馆180次。",
+      "status": "verified_direct",
+      "note": "仅核实虚构演示文本的表述；不是现实世界的科学证据。",
+      "supports": [
+        {
+          "quote": "The longer-hours group has an illustrative mean of 180 visits per library.",
+          "section": "Library hours and visits — FICTIONAL DEMO > Results",
+          "lines": [
+            23,
+            23
+          ],
+          "pdf": {
+            "status": "matched",
+            "page": 2
+          },
+          "md": {
+            "status": "matched"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E0009",
+      "type": "result",
+      "claim": "两组示意均值之差为60次。",
+      "status": "verified_direct",
+      "note": "仅核实虚构演示文本的表述；不是现实世界的科学证据。",
+      "supports": [
+        {
+          "quote": "The difference between the two illustrative group means is 60 visits.",
+          "section": "Library hours and visits — FICTIONAL DEMO > Results",
+          "lines": [
+            25,
+            25
+          ],
+          "pdf": {
+            "status": "matched",
+            "page": 2
+          },
+          "md": {
+            "status": "matched"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E0010",
+      "type": "discussion",
+      "claim": "图书馆规模和周边人口可能解释部分差异。",
+      "status": "verified_direct",
+      "note": "仅核实虚构演示文本的表述；不是现实世界的科学证据。",
+      "supports": [
+        {
+          "quote": "Library size and neighborhood population could explain part of the observed difference.",
+          "section": "Library hours and visits — FICTIONAL DEMO > Discussion",
+          "lines": [
+            29,
+            29
+          ],
+          "pdf": {
+            "status": "matched",
+            "page": 2
+          },
+          "md": {
+            "status": "matched"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E0011",
+      "type": "limitation",
+      "claim": "演示没有测量不确定性，也没有测试延长开放时间的效果。",
+      "status": "verified_direct",
+      "note": "仅核实虚构演示文本的表述；不是现实世界的科学证据。",
+      "supports": [
+        {
+          "quote": "The example does not measure uncertainty or test the effects of changing opening hours.",
+          "section": "Library hours and visits — FICTIONAL DEMO > Discussion",
+          "lines": [
+            31,
+            31
+          ],
+          "pdf": {
+            "status": "matched",
+            "page": 2
+          },
+          "md": {
+            "status": "matched"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E0012",
+      "type": "other",
+      "claim": "此句故意仅存在于 Markdown，用于演示 PDF 漏标提示。",
+      "status": "verified_direct",
+      "note": "仅核实虚构演示文本的表述；不是现实世界的科学证据。",
+      "supports": [
+        {
+          "quote": "This Markdown-only sentence deliberately demonstrates a missing PDF match.",
+          "section": "Library hours and visits — FICTIONAL DEMO > Discussion",
+          "lines": [
+            33,
+            33
+          ],
+          "pdf": {
+            "status": "not_found",
+            "reason": "No exact PDF word-sequence match"
+          },
+          "md": {
+            "status": "matched"
+          }
+        }
+      ]
+    }
+  ]
+}
