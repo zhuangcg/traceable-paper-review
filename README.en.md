@@ -147,7 +147,11 @@ paper.annotated.md        # when requested
 <referenced image folders>
 ```
 
-Only known generated sidecars are removed after a successful final audit and JSON write. Unknown files and source papers are preserved. Use a new working folder for later revisions. CSV is opt-in.
+Only known generated sidecars are removed after a successful final audit and JSON write. Unknown files are preserved. Use a new working folder for later revisions. CSV is opt-in.
+
+Annotations default to separate copies. You can explicitly choose to replace the input PDF, Markdown, or both. The agent first checks the copies, backs up and hashes each original, then replaces only the selected files. Changed or locked inputs and Markdown with unresolved links are left untouched and reported. Evidence remains traceable to the original backup. The annotation scripts do not overwrite sources directly; the agent performs this optional final step.
+
+When context is nearly full, the skill checkpoints progress and evidence, then uses subagents if the environment allows and authorizes them; otherwise it attempts host-supported context compaction, or continues in batches. Availability depends on the client and its permissions.
 
 Exact matching can miss passages because of columns, page breaks, formulas and conversion differences. A successful match does not prove a scientific conclusion. Markdown colors and heading navigation depend on the viewer; PDF import into Zotero has not been validated. The notes explicitly retain these limits.
 

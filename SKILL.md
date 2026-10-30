@@ -10,9 +10,11 @@ metadata:
 
 Review one clearly identified version of one paper. Default to Chinese notes, retaining precise original terminology. [SKILL.zh-CN.md](SKILL.zh-CN.md) is the equivalent Chinese edition, not a different workflow.
 
-Use existing Markdown as authoritative text; preserve original lines and images. Do not rewrite source files or reconvert a PDF when usable Markdown exists. For requested annotations, use the corresponding PDF's existing text layer for positioning. Inspect same-version figures visually when needed; never silently combine versions.
+Use existing Markdown as authoritative text; preserve original lines and images. Do not rewrite source files during analysis or reconvert a PDF when usable Markdown exists. Source replacement is permitted only under the explicit annotation choice below. For requested annotations, use the corresponding PDF's existing text layer for positioning. Inspect same-version figures visually when needed; never silently combine versions.
 
 Identify text, images, supplements and existing notes first. Use a separate work directory and preserve user work. Never substitute an abstract or search snippets for full reading, or invent quotes, numbers, pages, figures, theories or causal effects.
+
+When context is becoming too full for reliable reading, checkpoint completed sections, evidence locations, unresolved issues and next steps on disk. If delegation is available and authorized by the current environment, delegate bounded reading or verification with the source version and checkpoint, then independently reconcile results and conflicts. Otherwise use context compaction if the host offers it, preserving the checkpoint; if unavailable, resume in manageable batches from the checkpoint. Do not claim delegation or compaction occurred unless the host confirms it.
 
 ## PDF preparation and dependencies
 
@@ -49,6 +51,10 @@ Map claim_type consistently: blue background/problem/theory/definitions; green d
 - Run `audit_note.py <workdir>`. Recheck meaning and quantities and visually inspect every annotated page for placement, color, comments and column errors. Report missing materials and matched/unmatched counts. Mechanical PASS cannot establish scientific accuracy.
 
 ## Compact delivery and cleanup
+
+Default to separate annotated copies. When the user requests annotations and has not expressed a preference, offer a choice between copies and replacing the specific input PDF and/or Markdown; if no choice is obtained, use copies. A request to annotate alone is not permission to replace inputs. Only replace the explicitly selected files after annotations, semantic/visual checks, and `finish_review.py --clean` succeed. The annotation scripts themselves do not overwrite inputs.
+
+For each selected input, preserve a byte-identical original backup at a new nonconflicting path and verify its hash. Verify the input still matches the version analyzed before replacing it; if changed, locked, unavailable or permission denied, leave it untouched and report the problem. For Markdown, ensure image references and evidence links resolve from the original file's directory (adjust links to the delivered notes as needed); if this cannot be verified, do not replace it. Write the verified annotated content to a temporary file beside the input and atomically replace the input; report each outcome and backup path. If Markdown is replaced, update `review.json` to point to its preserved original backup with the original hash, and explain in the notes that evidence line numbers and hash refer to that backup. Record any PDF backup separately. Never overwrite an existing backup or silently delete it. For mixed PDF/Markdown choices, handle and report each independently.
 
 Deliver notes.md, review.json, requested annotated PDF/Markdown and its referenced images. Do not deliver a pile of indexes, logs, duplicate ledgers, CSV and schema notes.
 
