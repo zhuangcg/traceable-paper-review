@@ -40,6 +40,28 @@
 
 ### 需要装什么？PDF 怎么准备？
 
+可选使用 [MinerU 精准解析云端 API](https://mineru.net/apiManage/docs)：在 MinerU API 管理页面创建 Token，并设置环境变量 `MINERU_TOKEN`。当前官方文档说明每账号每天有 1000 **页**最高优先级额度，超出后优先级降低；额度、限制和费用以官方页面及账户显示为准。云端会接收上传的 PDF，只有明确同意上传后才使用。
+
+Windows PowerShell（仅当前窗口，关闭后失效）：
+
+```powershell
+$env:MINERU_TOKEN = '在此填入你的 Token'
+```
+
+macOS / Linux（仅当前终端）：
+
+```bash
+export MINERU_TOKEN='在此填入你的 Token'
+```
+
+不要把 Token 发给 AI、写进笔记或提交到仓库。用户同意上传后，Agent 可运行：
+
+```text
+python scripts/mineru_cloud.py <论文.pdf> --out <新的转换目录> --confirm-upload
+```
+
+结果包括 `full.md` 和图片；检查转换质量后使用。脚本需要 Python 标准库和网络访问；PDF 高亮仍需 PyMuPDF。已有可用 Markdown 时优先使用现有文件。
+
 - **精读、证据和检查：** Python 3.9+ 标准库；本项目演示在 Python 3.11 上运行。
 - **PDF 高亮：** 还需要 PyMuPDF，以及有可读取文字层的 PDF。它不负责把扫描图片自动变成可靠正文。
 - **只有 PDF：** 先准备可读 Markdown。复杂排版、表格和公式，推荐先用 **[MinerU 官方 GitHub：opendatalab/MinerU](https://github.com/opendatalab/MinerU)** 转换，再把 Markdown 连同图片目录交给技能。转换后仍要检查乱码、公式和图注；不能保证转换后所有证据都能高亮。

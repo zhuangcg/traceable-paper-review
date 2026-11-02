@@ -2,7 +2,7 @@
 name: traceable-paper-review
 description: 对单篇论文做中文全文精读，把解读连回原文证据，并为读者生成基础高亮与中文批注、详细笔记和研究流程图。适用于本地论文 PDF 或现成 MinerU Markdown。
 metadata:
-  version: "1.4.0"
+  version: "1.5.0"
   language: zh-CN
 ---
 
@@ -21,6 +21,8 @@ metadata:
 3. 写 `notes.md`，用 `citation_map.json` 给出的标准 Markdown 链接 `[E0001](#e0001)` 就近引用；文末由 `finalize_notes.py` 生成对应的 `### E0001` 证据条目，包含原句、行号、中文解释和每个支持片段的 PDF/Markdown 标注状态。普通 Markdown 标题与链接比脚注扩展更通用；不同渲染器对标题锚点规则不完全相同，不支持跳转时仍可按编号直接查找。保留同文件原句，不能只给外部链接。引用必须在句末标点之前，例如“观察到相关关系[E0001](#e0001)。”；多个引用连续放在标点前，不写成“结论。[E0001](#e0001)”。finalize_notes.py 会整理旧格式，audit_note.py 会拒绝仍放错位置的引用。
 
 ## PDF 准备与依赖
+
+仅有 PDF 时，提供本地解析或可选 MinerU 云端解析。只有用户明确同意上传该 PDF 后，才执行 `python scripts/mineru_cloud.py <论文.pdf> --out <新的转换目录> --confirm-upload`；设置令牌不等于上传授权。从环境变量 `MINERU_TOKEN` 读取令牌，不展示或写入笔记。将返回的 `full.md` 和图片目录交给 `prepare_source.py`；保留 PDF，在笔记记录 PDF 哈希及转换来源，并检查公式、表格、图片和缺页。失败时说明原因，不静默上传或用摘要代替。接口和额度以 https://mineru.net/apiManage/docs 为准。
 
 优先建议用 [MinerU 官方项目](https://github.com/opendatalab/MinerU) 将复杂 PDF 转为 Markdown，保留图片目录并检查公式和图注。MinerU 是可选前处理工具，其模型、硬件和安装要求以官方说明为准；未经允许不要上传私人论文到第三方服务。只有 PDF 时可使用已有转换能力，不能跳过正文文本的准备和核查。PDF 高亮依赖 PyMuPDF 及可读取的文字层；扫描件需另行 OCR 后核对，不能承诺仅安装 PyMuPDF 就能高亮扫描件。
 

@@ -2,7 +2,7 @@
 name: traceable-paper-review
 description: Ground interpretations in original evidence and prepare annotated papers for readers. Read one local paper in full to produce detailed Chinese notes, evidence, a concrete flowchart, and optional colored PDF/Markdown annotations.
 metadata:
-  version: "1.4.0"
+  version: "1.5.0"
   language: en
 ---
 
@@ -21,6 +21,8 @@ When context is becoming too full for reliable reading, checkpoint the source ve
 Recommend [MinerU's official repository](https://github.com/opendatalab/MinerU) for converting complex PDFs to Markdown. Keep its image folder and inspect formulas and captions. MinerU is optional preprocessing; follow its own model, hardware and installation requirements. Do not upload private papers to third-party services without permission.
 
 With PDF-only input, use an available reader/converter once, record text origin and inspect the conversion. Report missing capabilities precisely. Core scripts use Python 3.9+ standard library. PDF highlighting additionally requires PyMuPDF and readable PDF text.
+
+For PDF-only input, offer local processing or the optional MinerU cloud API. Use cloud only after the user explicitly consents to uploading that particular PDF; setting a token alone is not consent. Read the token from `MINERU_TOKEN` without displaying it. Run `python scripts/mineru_cloud.py <paper.pdf> --out <new-conversion-directory> --confirm-upload`. Feed the returned `full.md` and its image directory into `prepare_source.py`; retain the original PDF and record its hash and conversion provenance in the notes. Inspect formulas, tables, images and missing pages. On errors report the limitation; do not silently upload or substitute an abstract. The API and quota can change; consult https://mineru.net/apiManage/docs.
 
 When PDF processing is requested, the agent may install needed dependencies in a task-local virtual environment, state the installation target and obey current permissions. Do not install unrelated dependencies or system-wide software. Scanned PDFs need separate OCR and verification; PyMuPDF alone does not guarantee readable text.
 

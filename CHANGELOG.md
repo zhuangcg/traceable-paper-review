@@ -1,3 +1,7 @@
+## 1.5.0
+
+- Optional, consent-based MinerU cloud PDF conversion with environment-token support.
+
 ## 1.4.0
 
 - Compact notes + nested JSON delivery, with checked sidecar cleanup.

@@ -43,6 +43,22 @@ Example citation placement: `The paper reports an association[E0001](#e0001).`
 
 ### Requirements and PDF preparation
 
+Optional [MinerU cloud precision API](https://mineru.net/apiManage/docs): create a token in the MinerU API console and set `MINERU_TOKEN`. The current official documentation describes 1,000 high-priority **pages** per account per day, with lower priority thereafter; check the official site and your account for current quotas, limits and pricing. Your PDF is uploaded to MinerU only with your explicit consent.
+
+PowerShell (current window only):
+
+```powershell
+$env:MINERU_TOKEN = 'YOUR_TOKEN'
+```
+
+macOS / Linux (current terminal only):
+
+```bash
+export MINERU_TOKEN='YOUR_TOKEN'
+```
+
+Do not share the token in chat, notes or repositories. After consent, run `python scripts/mineru_cloud.py <paper.pdf> --out <new-conversion-directory> --confirm-upload`. Review the returned `full.md`, images, tables and formulas before use. This script uses the Python standard library and network access; PDF highlighting still requires PyMuPDF. Prefer an existing usable Markdown source.
+
 - **Core notes and checks:** Python 3.9+ standard library. The included demonstration was exercised on Python 3.11.
 - **PDF highlights:** PyMuPDF and a PDF with a readable text layer. This is not an OCR engine.
 - **PDF-only papers:** prepare a readable Markdown version first. For complex layouts, tables and formulas, we recommend [MinerU — official GitHub repository](https://github.com/opendatalab/MinerU). Keep its image directory alongside the Markdown and review conversion errors. Conversion quality varies; it does not guarantee correct evidence or successful highlights.
