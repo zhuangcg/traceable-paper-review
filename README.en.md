@@ -43,6 +43,8 @@ Example citation placement: `The paper reports an association[E0001](#e0001).`
 
 ### Requirements and PDF preparation
 
+The skill runs one environment preflight. Existing Markdown can be reviewed with the standard library; PDF highlighting requires PyMuPDF. If missing, install `requirements-pdf.txt` in the task-local virtual environment, with at most one retry before reporting the unavailable capability. PDF-to-Markdown conversion needs a separate parser.
+
 Optional [MinerU cloud precision API](https://mineru.net/apiManage/docs): create a token in the MinerU API console and set `MINERU_TOKEN`. The current official documentation describes 1,000 high-priority **pages** per account per day, with lower priority thereafter; check the official site and your account for current quotas, limits and pricing. Your PDF is uploaded to MinerU only with your explicit consent.
 
 PowerShell (current window only):

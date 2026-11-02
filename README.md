@@ -40,6 +40,8 @@
 
 ### 需要装什么？PDF 怎么准备？
 
+技能先运行一次环境预检：已有 Markdown 时，标准库即可处理笔记和 Markdown 标注；PDF 高亮需要 PyMuPDF。缺失时使用任务目录内的虚拟环境安装 `requirements-pdf.txt`，失败最多重试一次，再报告并降级。PDF 转 Markdown 则需要独立解析器。
+
 可选使用 [MinerU 精准解析云端 API](https://mineru.net/apiManage/docs)：在 MinerU API 管理页面创建 Token，并设置环境变量 `MINERU_TOKEN`。当前官方文档说明每账号每天有 1000 **页**最高优先级额度，超出后优先级降低；额度、限制和费用以官方页面及账户显示为准。云端会接收上传的 PDF，只有明确同意上传后才使用。
 
 Windows PowerShell（仅当前窗口，关闭后失效）：

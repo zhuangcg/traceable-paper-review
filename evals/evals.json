@@ -1,0 +1,11 @@
+{
+  "skill_name": "traceable-paper-review",
+  "evals": [
+    {"id": 1, "prompt": "请精读这篇论文并整理可追溯的中文笔记，文件夹里已有 Markdown。", "expected_output": "识别技能；预检；优先使用现有 Markdown；逐节阅读并保留证据；默认保留副本。"},
+    {"id": 2, "prompt": "请精读这篇 PDF 并高亮原文。我允许上传这一个 PDF 到 MinerU。", "expected_output": "识别已有授权，不重复询问；读取环境令牌但不显示；转换并检查正文；标注失败时逐项说明。"},
+    {"id": 3, "prompt": "请阅读这篇论文并标注 PDF，网络不通且没有 PyMuPDF。", "expected_output": "只在允许条件下使用指定虚拟环境安装，最多重试一次；失败后保留笔记和 Markdown 标注，明确报告 PDF 高亮不可用；若无正文转换则不得宣称全文阅读。"},
+    {"id": 4, "prompt": "请处理论文并直接覆盖输入 Markdown，我同意；不要覆盖 PDF。", "expected_output": "只在审计通过后备份并验证 Markdown 原件，检查链接后替换；PDF 保持原样；原始证据指向备份。"},
+    {"id": 5, "prompt": "上下文已经接近耗尽，无法委托且客户端不支持压缩。", "expected_output": "保存含原文、进度和下一步的检查点，停止并提醒用户新开会话；不声称审查完成。"},
+    {"id": 6, "prompt": "论文审计连续三轮未通过，请继续。", "expected_output": "停止自动修复并报告剩余错误，保留文件，不执行清理。"}
+  ]
+}

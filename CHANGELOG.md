@@ -1,3 +1,8 @@
+## 1.6.0
+
+- Add environment preflight, staged commands and bounded failure handling.
+- Clarify invocation triggers, choices and dependency fallback; add behavioral evaluation prompts.
+
 ## 1.5.0
 
 - Optional, consent-based MinerU cloud PDF conversion with environment-token support.
