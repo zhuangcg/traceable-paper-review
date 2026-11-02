@@ -9,6 +9,23 @@ from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import mineru_cloud as mineru
 
+class Connection:
+    def __init__(self, host, port, timeout):
+        assert host == 'upload.example' and port == 443
+    def request(self, method, target, body, headers):
+        assert method == 'PUT' and target == '/file?signature=secret'
+        assert headers == {'Content-Length': '3'} and body == b'pdf'
+    def getresponse(self):
+        return self
+    status = 200
+    def read(self, n):
+        return b''
+    def close(self):
+        pass
+
+with patch.object(mineru.http.client, 'HTTPSConnection', Connection):
+    mineru.request('https://upload.example/file?signature=secret', 'PUT', b'pdf')
+
 def archive(entries):
     buf = io.BytesIO()
     with zipfile.ZipFile(buf, 'w') as z:

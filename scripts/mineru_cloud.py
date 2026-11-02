@@ -2,6 +2,7 @@
 """Convert one local PDF with the opt-in MinerU cloud API."""
 import argparse
 import hashlib
+import http.client
 import io
 import json
 import os
@@ -22,6 +23,23 @@ MAX_RESULT = 512 * 1024 * 1024
 def request(url, method='GET', body=None, headers=None):
     if not url.startswith('https://'):
         raise ValueError('MinerU returned a non-HTTPS URL')
+    if method == 'PUT':
+        # Presigned MinerU uploads must not receive urllib's default Content-Type.
+        parsed = urllib.parse.urlsplit(url)
+        if not parsed.hostname or parsed.username or parsed.password:
+            raise ValueError('Invalid upload URL')
+        conn = http.client.HTTPSConnection(parsed.hostname, parsed.port or 443, timeout=120)
+        try:
+            target = urllib.parse.urlunsplit(('', '', parsed.path or '/', parsed.query, ''))
+            conn.request('PUT', target, body=body, headers={'Content-Length': str(len(body))})
+            response = conn.getresponse()
+            if not 200 <= response.status < 300:
+                raise ValueError('MinerU upload failed (HTTP %s)' % response.status)
+            return response.read(MAX_RESULT + 1)
+        except OSError:
+            raise ValueError('Network request failed; check connection and credentials') from None
+        finally:
+            conn.close()
     req = urllib.request.Request(url, data=body, headers=headers or {}, method=method)
     class SafeRedirect(urllib.request.HTTPRedirectHandler):
         def redirect_request(self, req, fp, code, msg, response_headers, newurl):
